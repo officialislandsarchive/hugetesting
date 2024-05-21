@@ -92,38 +92,31 @@ document.getElementById('searchInput').addEventListener('input', function() {
         { name: "Iron Ore", value: "15" },
         { name: "Iron", value: "20" }
     ];
+    
+    results.innerHTML = '';
+    var filteredItems = items.filter(function(item) {
+        return item.name.toUpperCase().indexOf(input) > -1;
+    });
 
-    // Clear previous results
-    results.innerHTML = "";
-
-    if (input) {
-        // Filter items based on search input
-        var filteredItems = items.filter(function(item) {
-            return item.name.toUpperCase().includes(input);
-        });
-
-        // Display filtered items
+    if (filteredItems.length > 0 && input !== '') {
+        resultsContainer.style.display = 'block';
         filteredItems.forEach(function(item) {
-            var itemBox = document.createElement("div");
-            itemBox.classList.add("search-result-item");
+            var itemBox = document.createElement('div');
+            itemBox.classList.add('search-result-item');
 
-            var itemName = document.createElement("span");
-            itemName.classList.add("item-name");
+            var itemName = document.createElement('span');
+            itemName.classList.add('item-name');
             itemName.textContent = item.name;
 
-            var coinValue = document.createElement("span");
-            coinValue.classList.add("coin-value");
+            var coinValue = document.createElement('span');
+            coinValue.classList.add('coin-value');
             coinValue.textContent = "Coin Value: " + item.value;
 
             itemBox.appendChild(itemName);
             itemBox.appendChild(coinValue);
             results.appendChild(itemBox);
         });
-
-        // Show the results container
-        resultsContainer.style.display = "block";
     } else {
-        // Hide the results container if input is empty
-        resultsContainer.style.display = "none";
+        resultsContainer.style.display = 'none';
     }
 });
