@@ -158,3 +158,27 @@ body {
     display: none; /* Initially hidden */
     margin-top: 80px; /* Adjusted for fixed header */
     background: rgba(255, 255, 255,
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 80px); /* Adjusted for fixed header */
+    overflow-y: auto;
+    z-index: 10;
+}
+
+.search-result-item {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.search-result-item:hover {
+    background-color: rgba(255, 255, 255, 0.95);
+    transform: translateY(-3px);
+}
+
+/* Add more styles to further customize the design */
